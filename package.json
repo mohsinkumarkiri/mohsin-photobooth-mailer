@@ -1,0 +1,24 @@
+{
+  "name": "mohsin-photobooth-mailer",
+  "version": "1.0.0",
+  "description": "A backend API that receives email + image data and sends an email",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohsinkumarkiri/mohsin-photobooth-mailer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mohsinkumarkiri/mohsin-photobooth-mailer/issues"
+  },
+  "homepage": "https://github.com/mohsinkumarkiri/mohsin-photobooth-mailer#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6"
+  }
+}
