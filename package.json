@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mohsinkumarkiri/mohsin-photobooth-mailer#readme",
   "dependencies": {
-    "@sendgrid/mail": "^8.1.6"
+    "@sendgrid/mail": "^8.1.6",
+    "resend": "^6.6.0"
   }
 }

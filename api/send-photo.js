@@ -1,6 +1,6 @@
-import sgMail from "@sendgrid/mail";
+import { Resend } from "resend";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -10,30 +10,29 @@ export default async function handler(req, res) {
   const { mailTo, imageData } = req.body;
 
   if (!mailTo || !imageData) {
-    return res.status(400).json({ error: "Missing mailTo or imageData" });
+    return res.status(400).json({
+      error: "mailTo and imageData are required",
+    });
   }
 
   try {
-    const msg = {
+    await resend.emails.send({
+      from: "Photo Booth <onboarding@resend.dev>",
       to: mailTo,
-      from: "noreply@yourdomain.com", // must be verified in SendGrid
-      subject: "Your Photo Booth Image",
-      html: "<p>Thank you for using the photo booth.</p>",
+      subject: "Your Photo Booth Picture",
+      html: "<p>Thank you for using the photo booth!</p>",
       attachments: [
         {
-          content: imageData,
           filename: "photo.jpg",
+          content: imageData, // Base64 string
           type: "image/jpeg",
-          disposition: "attachment",
         },
       ],
-    };
-
-    await sgMail.send(msg);
+    });
 
     return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error("Email error:", error);
     return res.status(500).json({ error: "Email sending failed" });
   }
 }
