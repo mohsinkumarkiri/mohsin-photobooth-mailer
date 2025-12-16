@@ -145,7 +145,7 @@ export default async function handler(req, res) {
       "{{VIDEO_SECTION}}",
       `<p>
          🎥 <strong>Your video:</strong><br/>
-         <a href="${videoUrl}" class="button" target="_blank">Download Video</a>
+         <a href="${videoUrl}" class="button" target="_blank">Download Your Video</a>
        </p>`
     );
   } else {
