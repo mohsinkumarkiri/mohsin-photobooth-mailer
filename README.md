@@ -1,2 +1,2 @@
 # mohsin-photobooth-mailer
-A backend API that receives email + image data and sends an email
+A backend API that sends email which incl. image data + video data
